@@ -1,0 +1,4555 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "BancaDigitalGT_ThreatModel",
+    "owner": "Katherine Giron",
+    "description": "Modelo de amenazas de la plataforma de banca en línea y móvil BancaDigital GT",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Arquitectura"
+      },
+      {
+        "name": "Desarrollo"
+      },
+      {
+        "name": "Seguridad"
+      }
+    ],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Nivel 0 - Contexto",
+        "diagramType": "STRIDE",
+        "placeholder": "Contexto general de BancaDigital GT",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 420,
+              "y": 260
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Plataforma BancaDigital GT"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "97040c85-bd3c-4bc8-92d8-168842b36094",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "Plataforma BancaDigital GT",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "f1f3d78a-339a-4e5b-83a7-0c8cf268b0e0",
+                  "title": "T-01 Toma de cuentas por credential stuffing y phishing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Atacante usa credenciales filtradas para autenticarse como cliente.",
+                  "mitigation": "MFA fuerte (FIDO2/passkeys), bloqueo progresivo, detección de contraseñas filtradas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "1a392bd4-5e79-420b-9798-375af7d8eb39",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                },
+                {
+                  "id": "5c0c31e7-bfb0-4773-b79b-57061e957b9e",
+                  "title": "T-04 BOLA/IDOR en API",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "Acceso a cuentas de otros clientes cambiando identificadores.",
+                  "mitigation": "Autorización por objeto, UUID, pruebas BOLA en CI.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "305a6c3e-c220-4417-8cb3-9cfa81f7d6d6",
+                  "title": "T-08 DDoS y abuso de API",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Denial of service",
+                  "description": "Inundación volumétrica o de capa 7 sin límites.",
+                  "mitigation": "Anti-DDoS, WAF, rate limiting, autoescalado.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 60,
+              "y": 260
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E1 Cliente bancario"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "91a49ed2-41ef-48a8-9360-8e55204deda5",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E1 Cliente bancario",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "66e72f82-b750-4726-998b-d1a715e6c7c4",
+                  "title": "T-02 SIM swap / interceptación de OTP por SMS",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Suplantación del cliente ante la operadora para recibir OTP.",
+                  "mitigation": "Reemplazar SMS por app autenticadora/passkeys; vinculación de dispositivo.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 420,
+              "y": 520
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E2 Administrador / Soporte"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "d87c9c50-c11e-4f7d-b681-01ba0f5e78f6",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E2 Administrador / Soporte",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "b08b56c3-79f8-4c86-af35-285c4465ee6a",
+                  "title": "T-10 Abuso de privilegios administrativos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Admin malicioso modifica datos de contacto y límites.",
+                  "mitigation": "RBAC mínimo, cuatro ojos, PAM, MFA.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 100
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E3 Proveedor SMS/Push"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "f39c4cbf-cf33-4619-b94c-08723d383959",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E3 Proveedor SMS/Push",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "3f594083-9941-4a52-9afa-eea849a62c48",
+                  "title": "T-18 Datos sensibles en SMS/push",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Fuga en el proveedor o en el canal.",
+                  "mitigation": "Mensajes sin datos sensibles, contrato con el proveedor.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 260
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E4 Red de pagos / ACH"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "1fed2a8b-1a4f-4342-a143-31e38070b595",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E4 Red de pagos / ACH",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "e9e57d67-9f90-46ea-bd86-138de3b9ad1b",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 420
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E5 Proveedor KYC / Antifraude"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "36764b38-a3d8-46a3-922c-5cd9b5d2a230",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E5 Proveedor KYC / Antifraude",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 20,
+              "y": 200
+            },
+            "size": {
+              "width": 260,
+              "height": 200
+            },
+            "attrs": {
+              "text": {
+                "text": "TB1 Internet"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "4bd90436-6198-44ff-9d97-07dc7e0d086e",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB1 Internet",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 740,
+              "y": 60
+            },
+            "size": {
+              "width": 240,
+              "height": 440
+            },
+            "attrs": {
+              "text": {
+                "text": "TB4 Redes de terceros"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "841617ee-94a3-447f-bf1c-058e25aa7656",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB4 Redes de terceros",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "99971e59-8141-4ef2-aa50-b731327f319c",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Órdenes y consultas"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "91a49ed2-41ef-48a8-9360-8e55204deda5"
+            },
+            "target": {
+              "cell": "97040c85-bd3c-4bc8-92d8-168842b36094"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Órdenes y consultas",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "14ff6d20-264c-43ce-b2b4-f5e275e219ed",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Administración"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "d87c9c50-c11e-4f7d-b681-01ba0f5e78f6"
+            },
+            "target": {
+              "cell": "97040c85-bd3c-4bc8-92d8-168842b36094"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Administración",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS+VPN",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "d327ce5a-12c0-48ae-810b-ed60ad417176",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Notificaciones / OTP"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "97040c85-bd3c-4bc8-92d8-168842b36094"
+            },
+            "target": {
+              "cell": "f39c4cbf-cf33-4619-b94c-08723d383959"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Notificaciones / OTP",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "4cfc072b-1a4d-4f68-953a-f7a9979343e6",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Instrucciones de pago"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "97040c85-bd3c-4bc8-92d8-168842b36094"
+            },
+            "target": {
+              "cell": "1fed2a8b-1a4f-4342-a143-31e38070b595"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Instrucciones de pago",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "mTLS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "21f24b5e-a345-4d15-ad69-68275b9b2a34",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Validación KYC"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "97040c85-bd3c-4bc8-92d8-168842b36094"
+            },
+            "target": {
+              "cell": "36764b38-a3d8-46a3-922c-5cd9b5d2a230"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Validación KYC",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "title": "Nivel 1 - Procesos principales",
+        "diagramType": "STRIDE",
+        "placeholder": "Procesos, almacenes, flujos y trust boundaries",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 20,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E1 Cliente"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "313d7a5e-8dc9-4ff7-bd15-8a3d5df4a327",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E1 Cliente",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "4522ac0c-d32b-4b70-bad4-e6a8383482da",
+                  "title": "T-02 SIM swap / interceptación de OTP por SMS",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Suplantación del cliente ante la operadora para recibir OTP.",
+                  "mitigation": "Reemplazar SMS por app autenticadora/passkeys; vinculación de dispositivo.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 20,
+              "y": 720
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E2 Administrador"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "241138d5-bf64-4a26-baf9-98ec1abc1e86",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E2 Administrador",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "f072dcf2-dd8d-4ec3-a5a5-54be353e4f37",
+                  "title": "T-10 Abuso de privilegios administrativos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Admin malicioso modifica datos de contacto y límites.",
+                  "mitigation": "RBAC mínimo, cuatro ojos, PAM, MFA.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1500,
+              "y": 160
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E3 Proveedor SMS/Push"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "cf7b3645-c030-4e41-86db-66be4159a3b0",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E3 Proveedor SMS/Push",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1500,
+              "y": 460
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E4 Red de pagos / ACH"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "332dac09-f019-4aa9-8250-a01a758ba26e",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E4 Red de pagos / ACH",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "62c6c913-fdf4-426d-ad38-1836a490883d",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1500,
+              "y": 640
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E5 KYC / Antifraude"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "18c3fdc2-3b55-4585-993a-da612741d3d7",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E5 KYC / Antifraude",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 260,
+              "y": 220
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P1 App móvil"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "f9d8c558-cc75-4c33-8578-2566d3ce3777",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P1 App móvil",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "bbbfd1fa-4edf-4f6b-b53e-7a83bbc1ca61",
+                  "title": "T-02 SIM swap / interceptación de OTP por SMS",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Suplantación del cliente ante la operadora para recibir OTP.",
+                  "mitigation": "Reemplazar SMS por app autenticadora/passkeys; vinculación de dispositivo.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                },
+                {
+                  "id": "4202257a-f52e-4f21-961c-c4099ae17ad5",
+                  "title": "T-20 Ingeniería inversa y datos locales sin cifrar",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Dispositivo rooteado o app manipulada.",
+                  "mitigation": "RASP, ofuscación, detección de root, cifrado local.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 260,
+              "y": 400
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P2 Portal web"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "7e845d05-c316-40ea-a63c-eeca0f6b6cfa",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P2 Portal web",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "fe4e1bc2-f56e-4b54-aed8-202802b38cd5",
+                  "title": "T-01 Toma de cuentas por credential stuffing y phishing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Atacante usa credenciales filtradas para autenticarse como cliente.",
+                  "mitigation": "MFA fuerte (FIDO2/passkeys), bloqueo progresivo, detección de contraseñas filtradas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                },
+                {
+                  "id": "4ae2f674-b95b-4dce-9fcb-f6b23aa52cd9",
+                  "title": "T-09 Intercepción MitM sin certificate pinning",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Captura de tráfico entre app y API.",
+                  "mitigation": "TLS 1.3, certificate pinning, mTLS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                },
+                {
+                  "id": "35d84f43-f277-4bd9-a37f-8171a9a77925",
+                  "title": "T-10 Abuso de privilegios administrativos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Admin malicioso modifica datos de contacto y límites.",
+                  "mitigation": "RBAC mínimo, cuatro ojos, PAM, MFA.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P3 API Gateway"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "80dbbe2f-b1af-4add-9a60-0eb2adc95a07",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P3 API Gateway",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "03eeb06d-71cb-4326-a757-970882b9780d",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                },
+                {
+                  "id": "26115839-9ea4-4fbf-a5eb-ecf17279ad9c",
+                  "title": "T-04 BOLA/IDOR en API",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "Acceso a cuentas de otros clientes cambiando identificadores.",
+                  "mitigation": "Autorización por objeto, UUID, pruebas BOLA en CI.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "a1a44df8-781a-44ad-b74d-41084bef6486",
+                  "title": "T-08 DDoS y abuso de API",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Denial of service",
+                  "description": "Inundación volumétrica o de capa 7 sin límites.",
+                  "mitigation": "Anti-DDoS, WAF, rate limiting, autoescalado.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 160
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P4 Autenticación IAM/MFA"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "5f494acc-801c-46e6-a5f2-cb29bb25e74d",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P4 Autenticación IAM/MFA",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "b77471ed-e1b3-4ea5-ab3c-cce136d6c1e0",
+                  "title": "T-01 Toma de cuentas por credential stuffing y phishing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Atacante usa credenciales filtradas para autenticarse como cliente.",
+                  "mitigation": "MFA fuerte (FIDO2/passkeys), bloqueo progresivo, detección de contraseñas filtradas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 360
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P5 Servicio de transacciones"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "5525681a-787a-40a2-ad08-68139c8985c9",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P5 Servicio de transacciones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "fd941dbc-c378-4f0e-830d-bf8fbb4730ab",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                },
+                {
+                  "id": "35cd55d8-6791-47cc-8fca-050014074dc8",
+                  "title": "T-07 Cliente niega transferencia",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Falta de no repudio sobre la orden.",
+                  "mitigation": "Firma digital y sellado de tiempo de transacciones.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1040,
+              "y": 460
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P6 Adaptador core"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "f523c891-1682-4294-bf97-7cd316c8cb76",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P6 Adaptador core",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "f450b33e-e75e-4747-b003-2c44e9696154",
+                  "title": "T-12 Alteración de mensajes hacia el core",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Inyección o modificación de mensajes del adaptador.",
+                  "mitigation": "Firma de mensajes, validación de esquema, segmentación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                },
+                {
+                  "id": "272bf95d-589d-42e7-b191-7cf21ccd0fdd",
+                  "title": "T-16 Saturación de colas y core",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Ráfagas saturan el adaptador del core.",
+                  "mitigation": "Backpressure, circuit breakers, colas con límites.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 24,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1040,
+              "y": 160
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P7 Notificaciones"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "f27a7282-ca1d-454e-a88a-279786dc6a07",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P7 Notificaciones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "41395152-43f4-49c0-9a10-8f53d3ead26d",
+                  "title": "T-18 Datos sensibles en SMS/push",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Fuga en el proveedor o en el canal.",
+                  "mitigation": "Mensajes sin datos sensibles, contrato con el proveedor.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 620
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P8 Auditoría y logging"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "a2495074-cc94-424c-8fae-c437c9400220",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P8 Auditoría y logging",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "50292f61-a8a5-433a-85c7-3ff451b56c13",
+                  "title": "T-15 Logs alterables o trazabilidad incompleta",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Eliminación o alteración de evidencia.",
+                  "mitigation": "Almacenamiento WORM, hash de logs, SIEM.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1300,
+              "y": 380
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D1 BD clientes y cuentas"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "1703d265-5b2f-476e-bc8f-a8c82d0a4290",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D1 BD clientes y cuentas",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "4fc2464c-371e-4ee4-a597-146b1faf97e4",
+                  "title": "T-05 Exfiltración de BD de clientes",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Inyección SQL o credenciales de BD filtradas.",
+                  "mitigation": "Consultas parametrizadas, mínimo privilegio, cifrado de columnas, DAM.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                },
+                {
+                  "id": "97e03922-7042-4f1e-bcb6-3ec2855e6869",
+                  "title": "T-21 Consultas costosas a BD",
+                  "status": "Open",
+                  "severity": "Low",
+                  "type": "Denial of service",
+                  "description": "Degradación por consultas pesadas.",
+                  "mitigation": "Límites de consulta, índices, réplicas de lectura.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1040,
+              "y": 320
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D2 BD transacciones"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "9471b6db-2af0-4d9c-af68-70c1bf0160d9",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D2 BD transacciones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "bf1616e4-3b42-4546-9d67-6dfa5b3dc205",
+                  "title": "T-06 Alteración de registros de transacciones por insider",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "DBA o desarrollador modifica datos directamente.",
+                  "mitigation": "PAM, separación de funciones, hash encadenado, conciliación diaria.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                },
+                {
+                  "id": "a50df486-94c2-4803-9d0b-af4f12ce153b",
+                  "title": "T-07 Cliente niega transferencia",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Falta de no repudio sobre la orden.",
+                  "mitigation": "Firma digital y sellado de tiempo de transacciones.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 30,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1040,
+              "y": 20
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D3 Sesiones y tokens"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "76f8f0f8-fc68-4092-b195-308dfb7e739a",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D3 Sesiones y tokens",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "7ab08b67-fd7f-49f2-b271-d73ee4487aae",
+                  "title": "T-17 Robo de tokens / JWT mal validado",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Reutilización o forja de tokens de sesión.",
+                  "mitigation": "Tokens cortos con rotación, validación estricta, revocación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 620
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D4 Bóveda secretos / HSM"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "2f1c9266-ef7c-4501-8189-418b8b2eccfa",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D4 Bóveda secretos / HSM",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "30d880ef-1e5e-4f5a-b4a4-09ee5eb86328",
+                  "title": "T-11 Secretos y llaves expuestos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Secretos en repositorios, imágenes o variables de entorno.",
+                  "mitigation": "Vault/HSM, escaneo de secretos en CI/CD, rotación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1040,
+              "y": 700
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D5 Logs / SIEM"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "34dd3ca5-ef41-4dfc-9be1-f859912bfac4",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D5 Logs / SIEM",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "d29c997e-4890-45dd-a402-960e8cb16dbe",
+                  "title": "T-14 Logs con datos sensibles",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "PAN, tokens o PII en texto claro en logs.",
+                  "mitigation": "Enmascarado, tokenización, control de acceso a logs.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 33,
+                  "score": ""
+                },
+                {
+                  "id": "ff666ad0-1d87-4ecc-9dca-57650e342f13",
+                  "title": "T-15 Logs alterables o trazabilidad incompleta",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Eliminación o alteración de evidencia.",
+                  "mitigation": "Almacenamiento WORM, hash de logs, SIEM.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 34,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 0,
+              "y": 180
+            },
+            "size": {
+              "width": 200,
+              "height": 380
+            },
+            "attrs": {
+              "text": {
+                "text": "TB1 Internet / Dispositivo"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "40af931c-1dfd-4b28-92b1-85e18470665b",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB1 Internet / Dispositivo",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 240,
+              "y": 180
+            },
+            "size": {
+              "width": 520,
+              "height": 340
+            },
+            "attrs": {
+              "text": {
+                "text": "TB1-2 DMZ"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "a16f3c12-5732-4b57-a071-3c2f5935964a",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB1-2 DMZ",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 760,
+              "y": 120
+            },
+            "size": {
+              "width": 500,
+              "height": 700
+            },
+            "attrs": {
+              "text": {
+                "text": "TB2-3 Red de aplicaciones"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "3f124f18-93a8-49fc-9929-39a243574406",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB2-3 Red de aplicaciones",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1280,
+              "y": 320
+            },
+            "size": {
+              "width": 200,
+              "height": 200
+            },
+            "attrs": {
+              "text": {
+                "text": "TB3 Zona de datos / core"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "61739ee8-a856-4806-8d03-13653cc94572",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB3 Zona de datos / core",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1480,
+              "y": 100
+            },
+            "size": {
+              "width": 220,
+              "height": 720
+            },
+            "attrs": {
+              "text": {
+                "text": "TB4 Redes de terceros"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "680e2ecb-a783-4b2c-a546-553f6ae10762",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB4 Redes de terceros",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 0,
+              "y": 660
+            },
+            "size": {
+              "width": 200,
+              "height": 160
+            },
+            "attrs": {
+              "text": {
+                "text": "TB5 Zona administrativa"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "8c192776-ccbb-4690-b2ef-1f430065b0a7",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB5 Zona administrativa",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "a8d3d1c7-d819-4370-bf5f-cc3609a72e7c",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F1 Credenciales y órdenes"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "313d7a5e-8dc9-4ff7-bd15-8a3d5df4a327"
+            },
+            "target": {
+              "cell": "f9d8c558-cc75-4c33-8578-2566d3ce3777"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F1 Credenciales y órdenes",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS TLS1.3",
+              "threats": [
+                {
+                  "id": "7f944325-2843-4c79-a627-bda4d6290a68",
+                  "title": "T-09 Intercepción MitM sin certificate pinning",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Captura de tráfico entre app y API.",
+                  "mitigation": "TLS 1.3, certificate pinning, mTLS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 35,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "48012ea1-6497-46a5-b952-44d062d2efb8",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F1b Credenciales y órdenes"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "313d7a5e-8dc9-4ff7-bd15-8a3d5df4a327"
+            },
+            "target": {
+              "cell": "7e845d05-c316-40ea-a63c-eeca0f6b6cfa"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F1b Credenciales y órdenes",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS TLS1.3",
+              "threats": [
+                {
+                  "id": "ab1d6810-aaee-429a-8de7-5ca86729d742",
+                  "title": "T-09 Intercepción MitM sin certificate pinning",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Captura de tráfico entre app y API.",
+                  "mitigation": "TLS 1.3, certificate pinning, mTLS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 36,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "7262ba96-22fc-4843-8800-d752c715ce1b",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F2 Requests API + token"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "f9d8c558-cc75-4c33-8578-2566d3ce3777"
+            },
+            "target": {
+              "cell": "80dbbe2f-b1af-4add-9a60-0eb2adc95a07"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F2 Requests API + token",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS mTLS",
+              "threats": [
+                {
+                  "id": "ce94f29a-bf8a-4b72-b5c0-440e58976906",
+                  "title": "T-17 Robo de tokens / JWT mal validado",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Reutilización o forja de tokens de sesión.",
+                  "mitigation": "Tokens cortos con rotación, validación estricta, revocación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 37,
+                  "score": ""
+                },
+                {
+                  "id": "f14c944b-2fe2-432d-a05e-c85de9404fed",
+                  "title": "T-04 BOLA/IDOR en API",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "Acceso a cuentas de otros clientes cambiando identificadores.",
+                  "mitigation": "Autorización por objeto, UUID, pruebas BOLA en CI.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 38,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "95dd64af-59de-4098-bc4e-d711f80b2be2",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F2b Requests API + token"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "7e845d05-c316-40ea-a63c-eeca0f6b6cfa"
+            },
+            "target": {
+              "cell": "80dbbe2f-b1af-4add-9a60-0eb2adc95a07"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F2b Requests API + token",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "0dcd9634-c908-4463-9f49-a9ca2c7b8ce9",
+                  "title": "T-17 Robo de tokens / JWT mal validado",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Reutilización o forja de tokens de sesión.",
+                  "mitigation": "Tokens cortos con rotación, validación estricta, revocación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 39,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "d919c0f0-7c49-4373-b333-a7b11ebf3501",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F3 Autenticación MFA"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "80dbbe2f-b1af-4add-9a60-0eb2adc95a07"
+            },
+            "target": {
+              "cell": "5f494acc-801c-46e6-a5f2-cb29bb25e74d"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F3 Autenticación MFA",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "0e0dd24e-573a-4bfd-a0bf-cdd9a6f3e77a",
+                  "title": "T-01 Toma de cuentas por credential stuffing y phishing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Atacante usa credenciales filtradas para autenticarse como cliente.",
+                  "mitigation": "MFA fuerte (FIDO2/passkeys), bloqueo progresivo, detección de contraseñas filtradas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 40,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "7e21baff-ba5d-4345-8194-53c256a0ad41",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F4 Sesiones"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5f494acc-801c-46e6-a5f2-cb29bb25e74d"
+            },
+            "target": {
+              "cell": "76f8f0f8-fc68-4092-b195-308dfb7e739a"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F4 Sesiones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [
+                {
+                  "id": "86edf909-1559-401b-bc56-8d06c38e7499",
+                  "title": "T-17 Robo de tokens / JWT mal validado",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Reutilización o forja de tokens de sesión.",
+                  "mitigation": "Tokens cortos con rotación, validación estricta, revocación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 41,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "64027003-dfe8-483e-ba85-05399ce46f1b",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F5 Órdenes de transferencia"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "80dbbe2f-b1af-4add-9a60-0eb2adc95a07"
+            },
+            "target": {
+              "cell": "5525681a-787a-40a2-ad08-68139c8985c9"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F5 Órdenes de transferencia",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS interno",
+              "threats": [
+                {
+                  "id": "126aed11-79c7-4a45-8df9-5cb47c390cb6",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 42,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "05c3c760-93b1-440e-8ae3-2984fcbf6f99",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F6 Transacciones"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5525681a-787a-40a2-ad08-68139c8985c9"
+            },
+            "target": {
+              "cell": "9471b6db-2af0-4d9c-af68-70c1bf0160d9"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F6 Transacciones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/SQL",
+              "threats": [
+                {
+                  "id": "eecd193b-f478-4319-b7d6-f61b34b19a28",
+                  "title": "T-06 Alteración de registros de transacciones por insider",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "DBA o desarrollador modifica datos directamente.",
+                  "mitigation": "PAM, separación de funciones, hash encadenado, conciliación diaria.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 43,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "f15d7d19-63ab-40c5-a3d7-45b1f8698c3b",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F7 Débito/crédito"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5525681a-787a-40a2-ad08-68139c8985c9"
+            },
+            "target": {
+              "cell": "f523c891-1682-4294-bf97-7cd316c8cb76"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F7 Débito/crédito",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "MQ/TLS",
+              "threats": [
+                {
+                  "id": "af05907e-b69f-411f-beb6-fbf145b8efb0",
+                  "title": "T-12 Alteración de mensajes hacia el core",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Inyección o modificación de mensajes del adaptador.",
+                  "mitigation": "Firma de mensajes, validación de esquema, segmentación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 44,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "5efa5b23-f0d8-4080-a702-b9bf6a8e1195",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F8 Cuentas y saldos"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "f523c891-1682-4294-bf97-7cd316c8cb76"
+            },
+            "target": {
+              "cell": "1703d265-5b2f-476e-bc8f-a8c82d0a4290"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F8 Cuentas y saldos",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/SQL",
+              "threats": [
+                {
+                  "id": "97f2238a-f7e4-4f57-8e41-1204d5bb8a70",
+                  "title": "T-05 Exfiltración de BD de clientes",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Inyección SQL o credenciales de BD filtradas.",
+                  "mitigation": "Consultas parametrizadas, mínimo privilegio, cifrado de columnas, DAM.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 45,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "8ecc5492-e875-40e7-a0f8-3719323cd3e5",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F9 Instrucciones de pago"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "f523c891-1682-4294-bf97-7cd316c8cb76"
+            },
+            "target": {
+              "cell": "332dac09-f019-4aa9-8250-a01a758ba26e"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F9 Instrucciones de pago",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "mTLS + firma",
+              "threats": [
+                {
+                  "id": "cf70ed2c-debb-4dd7-b356-ddcc0c327585",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 46,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "ffa625b6-cca4-4b16-9305-1bd1cc7eab30",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F10 Alertas / OTP"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5525681a-787a-40a2-ad08-68139c8985c9"
+            },
+            "target": {
+              "cell": "f27a7282-ca1d-454e-a88a-279786dc6a07"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F10 Alertas / OTP",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "e022d3a6-5c1e-45e9-9e94-96f300df5251",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F10b OTP y alertas"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "f27a7282-ca1d-454e-a88a-279786dc6a07"
+            },
+            "target": {
+              "cell": "cf7b3645-c030-4e41-86db-66be4159a3b0"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F10b OTP y alertas",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "2dd59023-cc99-4317-b676-47eed3fb5586",
+                  "title": "T-18 Datos sensibles en SMS/push",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Fuga en el proveedor o en el canal.",
+                  "mitigation": "Mensajes sin datos sensibles, contrato con el proveedor.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 47,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "97fb82a4-1893-4814-9bda-363c3941ee5d",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F11 Eventos de auditoría"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5525681a-787a-40a2-ad08-68139c8985c9"
+            },
+            "target": {
+              "cell": "a2495074-cc94-424c-8fae-c437c9400220"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F11 Eventos de auditoría",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/Syslog",
+              "threats": [
+                {
+                  "id": "d368bbb6-a634-4111-b432-063667fc0b7b",
+                  "title": "T-15 Logs alterables o trazabilidad incompleta",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Eliminación o alteración de evidencia.",
+                  "mitigation": "Almacenamiento WORM, hash de logs, SIEM.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 48,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "9b6ab788-d1c7-45cd-ba29-0d2d3ed60e41",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F11b Logs"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "a2495074-cc94-424c-8fae-c437c9400220"
+            },
+            "target": {
+              "cell": "34dd3ca5-ef41-4dfc-9be1-f859912bfac4"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F11b Logs",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [
+                {
+                  "id": "2eaf845d-a71c-4232-bd56-5b1ffdf52314",
+                  "title": "T-14 Logs con datos sensibles",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "PAN, tokens o PII en texto claro en logs.",
+                  "mitigation": "Enmascarado, tokenización, control de acceso a logs.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 49,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "f3f52829-eb6b-4bf0-b533-fb975da9f25f",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F12 Administración"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "241138d5-bf64-4a26-baf9-98ec1abc1e86"
+            },
+            "target": {
+              "cell": "7e845d05-c316-40ea-a63c-eeca0f6b6cfa"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F12 Administración",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS+VPN+MFA",
+              "threats": [
+                {
+                  "id": "9acb596d-96a5-44fe-ab53-a4fa7cd9f4d9",
+                  "title": "T-10 Abuso de privilegios administrativos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Admin malicioso modifica datos de contacto y límites.",
+                  "mitigation": "RBAC mínimo, cuatro ojos, PAM, MFA.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 50,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "ae960512-9594-42c4-a2cf-061ba65385b7",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F13 Verificación KYC"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5f494acc-801c-46e6-a5f2-cb29bb25e74d"
+            },
+            "target": {
+              "cell": "18c3fdc2-3b55-4585-993a-da612741d3d7"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F13 Verificación KYC",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "5c877512-9c58-4a8f-a1e8-f1013bdc7f12",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "F14 Secretos y llaves"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "5525681a-787a-40a2-ad08-68139c8985c9"
+            },
+            "target": {
+              "cell": "2f1c9266-ef7c-4501-8189-418b8b2eccfa"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "F14 Secretos y llaves",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "mTLS",
+              "threats": [
+                {
+                  "id": "7ce07ee5-5352-4724-899f-0f86c1cb1abc",
+                  "title": "T-11 Secretos y llaves expuestos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Secretos en repositorios, imágenes o variables de entorno.",
+                  "mitigation": "Vault/HSM, escaneo de secretos en CI/CD, rotación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 51,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Nivel 2 - Flujo de transferencia e integración bancaria",
+        "diagramType": "STRIDE",
+        "placeholder": "Descomposición de P5/P6",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 20,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "P3 API Gateway"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "b5277037-aec4-4ae4-adef-b6639a39046b",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "P3 API Gateway",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "563b8772-ec76-4db6-909d-30c69cfdb5b3",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 52,
+                  "score": ""
+                },
+                {
+                  "id": "fd0d02aa-fe2a-4b2e-8f47-4f9e4cf43aec",
+                  "title": "T-08 DDoS y abuso de API",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Denial of service",
+                  "description": "Inundación volumétrica o de capa 7 sin límites.",
+                  "mitigation": "Anti-DDoS, WAF, rate limiting, autoescalado.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 53,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 260,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "5.1 Validador de orden"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "ef34b857-9b70-472b-907e-14cbc7298038",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "5.1 Validador de orden",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "429f2e78-2f79-4850-a6e7-86afe97ae9d1",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 54,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 260,
+              "y": 120
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "5.2 Motor antifraude"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "e8418cf8-eb60-4a36-a685-7caa99ea3021",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "5.2 Motor antifraude",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "a302fb85-a29c-4f5b-a384-e5b7b03da6a0",
+                  "title": "T-01 Toma de cuentas por credential stuffing y phishing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Atacante usa credenciales filtradas para autenticarse como cliente.",
+                  "mitigation": "MFA fuerte (FIDO2/passkeys), bloqueo progresivo, detección de contraseñas filtradas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 55,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 120
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "5.3 Firmador de órdenes"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "36f66c3b-91e3-408d-8ce9-f9065739212a",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "5.3 Firmador de órdenes",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "5435f4fa-90d5-483f-bde9-ddae1298df63",
+                  "title": "T-11 Secretos y llaves expuestos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Secretos en repositorios, imágenes o variables de entorno.",
+                  "mitigation": "Vault/HSM, escaneo de secretos en CI/CD, rotación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 56,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "5.4 Orquestador de transacción"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "1cc8adcf-805c-44fd-839a-391438d04154",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "5.4 Orquestador de transacción",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "fb23e657-fc63-4c5a-8ac2-3ada7dc3c1ca",
+                  "title": "T-07 Cliente niega transferencia",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Falta de no repudio sobre la orden.",
+                  "mitigation": "Firma digital y sellado de tiempo de transacciones.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 57,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 800,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "5.5 Conector core"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "d44ba1fb-a874-4dd0-9407-35ed6cc69f7c",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "5.5 Conector core",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "8637b31f-a657-4770-b5d8-f70f1e322b86",
+                  "title": "T-12 Alteración de mensajes hacia el core",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Inyección o modificación de mensajes del adaptador.",
+                  "mitigation": "Firma de mensajes, validación de esquema, segmentación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 58,
+                  "score": ""
+                },
+                {
+                  "id": "486007c4-2ade-4337-8117-8e243c8ff921",
+                  "title": "T-16 Saturación de colas y core",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Ráfagas saturan el adaptador del core.",
+                  "mitigation": "Backpressure, circuit breakers, colas con límites.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 59,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 800,
+              "y": 500
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "5.6 Conector ACH"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "995c25fb-0fe8-4c77-95cd-e2b2e6b87569",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "5.6 Conector ACH",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "dd901e85-1115-4d91-92d3-41b4b04bfb13",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 60,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 500
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D2 BD transacciones"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "5d010a80-d870-46d7-a66a-8b770c75f631",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D2 BD transacciones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "134ec665-3892-442d-8ad9-6dab33233980",
+                  "title": "T-06 Alteración de registros de transacciones por insider",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "DBA o desarrollador modifica datos directamente.",
+                  "mitigation": "PAM, separación de funciones, hash encadenado, conciliación diaria.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 61,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 20
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "D4 HSM / Vault"
+              },
+              "topLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "0e4ae03b-5cf9-498a-ac8b-16a486c67391",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Store",
+              "name": "D4 HSM / Vault",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "57aa08bd-290d-4ee8-a97e-c90b99bd0755",
+                  "title": "T-11 Secretos y llaves expuestos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Secretos en repositorios, imágenes o variables de entorno.",
+                  "mitigation": "Vault/HSM, escaneo de secretos en CI/CD, rotación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 62,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 260,
+              "y": 0
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E5 KYC / Antifraude"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "0e33973a-c14f-49a3-883a-c214477bb63b",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E5 KYC / Antifraude",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1100,
+              "y": 500
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "E4 Red de pagos / ACH"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "1a9b58f6-d707-49d6-925b-b8d86e29dec2",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E4 Red de pagos / ACH",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "6295ea2f-00d5-4468-865e-5fdd50cdd046",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 63,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 1100,
+              "y": 300
+            },
+            "size": {
+              "width": 160,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Core bancario"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "399a5a15-5efa-4658-ac7d-004cf55c2362",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Core bancario",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "position": {
+              "x": 0,
+              "y": 260
+            },
+            "size": {
+              "width": 200,
+              "height": 160
+            },
+            "attrs": {
+              "text": {
+                "text": "TB2 DMZ / Aplicaciones"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "f899d993-11d9-41fd-b9c9-13ac0b9149c9",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB2 DMZ / Aplicaciones",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1060,
+              "y": 260
+            },
+            "size": {
+              "width": 200,
+              "height": 160
+            },
+            "attrs": {
+              "text": {
+                "text": "TB3 Aplicaciones / Core"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "856ffe16-5faa-4668-847d-52251522ca47",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB3 Aplicaciones / Core",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1060,
+              "y": 460
+            },
+            "size": {
+              "width": 240,
+              "height": 160
+            },
+            "attrs": {
+              "text": {
+                "text": "TB4 Red bancaria / Terceros"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 2,
+                "strokeDasharray": "9 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "f9f21bd2-6611-4988-9df2-86c2cc871caf",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "TB4 Red bancaria / Terceros",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "a131da7a-a052-42f9-89d6-bbd2f69f0094",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Orden recibida"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "b5277037-aec4-4ae4-adef-b6639a39046b"
+            },
+            "target": {
+              "cell": "ef34b857-9b70-472b-907e-14cbc7298038"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Orden recibida",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "0404f6ff-e948-4272-bbc0-daeacdb3de40",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 64,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "505d349f-d3a0-4e8b-acb3-43aed7fed536",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Consulta de riesgo"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "ef34b857-9b70-472b-907e-14cbc7298038"
+            },
+            "target": {
+              "cell": "e8418cf8-eb60-4a36-a685-7caa99ea3021"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Consulta de riesgo",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "6834eb33-66e6-47a2-86a2-36923f54a0f3",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Scoring externo"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "e8418cf8-eb60-4a36-a685-7caa99ea3021"
+            },
+            "target": {
+              "cell": "0e33973a-c14f-49a3-883a-c214477bb63b"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Scoring externo",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "8a92e94d-3d9e-47df-a109-65074fbb0cd4",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Orden validada"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "ef34b857-9b70-472b-907e-14cbc7298038"
+            },
+            "target": {
+              "cell": "1cc8adcf-805c-44fd-839a-391438d04154"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Orden validada",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "5c7f8bbf-51e7-4c02-afa9-d16cc7fcfcae",
+                  "title": "T-03 Manipulación de monto o cuenta destino",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Alteración de parámetros de la orden de transferencia.",
+                  "mitigation": "Validación de negocio en servidor, firma de orden, confirmación WYSIWYS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 65,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "0437f7a7-387d-48ee-889e-3af2db90e3c7",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Solicitud de firma"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "1cc8adcf-805c-44fd-839a-391438d04154"
+            },
+            "target": {
+              "cell": "36f66c3b-91e3-408d-8ce9-f9065739212a"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Solicitud de firma",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "f0803e59-3785-4cff-aed4-396613328b89",
+                  "title": "T-11 Secretos y llaves expuestos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Secretos en repositorios, imágenes o variables de entorno.",
+                  "mitigation": "Vault/HSM, escaneo de secretos en CI/CD, rotación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 66,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "feee7b7b-0faf-4964-8caa-b41ecbfbd28e",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Uso de llave"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "36f66c3b-91e3-408d-8ce9-f9065739212a"
+            },
+            "target": {
+              "cell": "0e4ae03b-5cf9-498a-ac8b-16a486c67391"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Uso de llave",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "46eb3ca7-cf41-4692-82ab-741bf7fcd6a1",
+                  "title": "T-11 Secretos y llaves expuestos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Secretos en repositorios, imágenes o variables de entorno.",
+                  "mitigation": "Vault/HSM, escaneo de secretos en CI/CD, rotación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 67,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "6238ebea-7e47-41a9-a1ba-a93e18ec7791",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Estado y registro"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "1cc8adcf-805c-44fd-839a-391438d04154"
+            },
+            "target": {
+              "cell": "5d010a80-d870-46d7-a66a-8b770c75f631"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Estado y registro",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "cda9b448-cc71-404f-b36a-ce7b4863714d",
+                  "title": "T-06 Alteración de registros de transacciones por insider",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "DBA o desarrollador modifica datos directamente.",
+                  "mitigation": "PAM, separación de funciones, hash encadenado, conciliación diaria.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 68,
+                  "score": ""
+                },
+                {
+                  "id": "813ba302-49cb-4b73-9639-4bffeaca88da",
+                  "title": "T-07 Cliente niega transferencia",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Falta de no repudio sobre la orden.",
+                  "mitigation": "Firma digital y sellado de tiempo de transacciones.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 69,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "230e78b7-083e-4c86-9d38-696dc0cc5d04",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Mensaje al core"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "1cc8adcf-805c-44fd-839a-391438d04154"
+            },
+            "target": {
+              "cell": "d44ba1fb-a874-4dd0-9407-35ed6cc69f7c"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Mensaje al core",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "c8c91345-bfb7-4c0c-bd43-76f947e6c069",
+                  "title": "T-12 Alteración de mensajes hacia el core",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Inyección o modificación de mensajes del adaptador.",
+                  "mitigation": "Firma de mensajes, validación de esquema, segmentación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 70,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "06dd75a8-b996-429b-8fb1-cdc4689f5d08",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Mensaje ISO al core"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "d44ba1fb-a874-4dd0-9407-35ed6cc69f7c"
+            },
+            "target": {
+              "cell": "399a5a15-5efa-4658-ac7d-004cf55c2362"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Mensaje ISO al core",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "ed207d1f-44ac-45fe-b0f5-acfe7b43873c",
+                  "title": "T-12 Alteración de mensajes hacia el core",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Inyección o modificación de mensajes del adaptador.",
+                  "mitigation": "Firma de mensajes, validación de esquema, segmentación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 71,
+                  "score": ""
+                },
+                {
+                  "id": "3eb7e796-a11a-4916-bae4-ce84a8a449dd",
+                  "title": "T-16 Saturación de colas y core",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Ráfagas saturan el adaptador del core.",
+                  "mitigation": "Backpressure, circuit breakers, colas con límites.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 72,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "293aa07a-4146-4178-9140-4d1d25a1b9d2",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Instrucción de pago"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "1cc8adcf-805c-44fd-839a-391438d04154"
+            },
+            "target": {
+              "cell": "995c25fb-0fe8-4c77-95cd-e2b2e6b87569"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Instrucción de pago",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "4498b037-3b63-4349-9d18-bec011c0e2a7",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 73,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                }
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "id": "efbbc78a-a734-41fb-a223-7ad1ddaabe21",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "ISO 20022 firmado"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "995c25fb-0fe8-4c77-95cd-e2b2e6b87569"
+            },
+            "target": {
+              "cell": "1a9b58f6-d707-49d6-925b-b8d86e29dec2"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "ISO 20022 firmado",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS/mTLS",
+              "threats": [
+                {
+                  "id": "00a59527-9462-4005-8e6d-3e6813a8da0d",
+                  "title": "T-13 Callback/webhook falso de red de pagos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Notificación falsa de confirmación de pago.",
+                  "mitigation": "Verificación de firma, mTLS, lista de IP permitidas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 74,
+                  "score": ""
+                }
+              ],
+              "isTrustBoundary": false
+            }
+          }
+        ]
+      }
+    ],
+    "diagramTop": 3,
+    "reviewer": "Jefe Informatica",
+    "threatTop": 74
+  }
+}
